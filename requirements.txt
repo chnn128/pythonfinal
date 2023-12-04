@@ -1,0 +1,9 @@
+#this file contains all the required packages that must be installed 
+
+pytest
+IPython
+spotipy
+python-dotenv
+#operator
+
+
