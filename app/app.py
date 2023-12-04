@@ -1,6 +1,7 @@
 #this script takes in all user inputs
 
 import os
+from dotenv import load_dotenv
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -46,9 +47,9 @@ def main(cid, csecret, playlist_URL):
     sorted_track_attributerating = []
 
     for track in sorted_tracks_attributes:
-    sorted_track_uri_attributerating.append([track['uri'], track['danceability']])
-    sorted_track_uris.append(track['uri'])
-    sorted_track_attributerating.append(track['danceability'])
+        sorted_track_uri_attributerating.append([track['uri'], track['danceability']])
+        sorted_track_uris.append(track['uri'])
+        sorted_track_attributerating.append(track['danceability'])
 
 
 
@@ -68,12 +69,12 @@ def main(cid, csecret, playlist_URL):
     n = 0
 
     for track in sorted_tracks_infos:
-    final_return.append({'Name': track['name'],
-                        'Artist': track['artists'][0]['name'],
-                        'Album': track['album']['name'],
-                        'Thumbnail': track['album']['images'][1]['url'],
-                        'Danceability': sorted_track_attributerating[n]})
-    n = n + 1
+        final_return.append({'Name': track['name'],
+                            'Artist': track['artists'][0]['name'],
+                            'Album': track['album']['name'],
+                            'Thumbnail': track['album']['images'][1]['url'],
+                            'Danceability': sorted_track_attributerating[n]})
+        n = n + 1
 
 
 
@@ -87,12 +88,17 @@ def main(cid, csecret, playlist_URL):
 
 if __name__ == "__main__":
 
+    load_dotenv()
+
     CID = str(os.getenv("CID"))
     CSECRET = str(os.getenv("CSECRET"))
+
     PLAYLIST_URL = input("Please enter playlist URL: ")
+    
 
 
-    final_return =  main(cid = CID, csecret = CSECRET, playlist_url = PLAYLIST_URL)
+
+    final_return =  main(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL)
 
     for track in final_return:
         print('\n---------')

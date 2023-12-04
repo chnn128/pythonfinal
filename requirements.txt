@@ -1,4 +1,9 @@
-operator
+#this file contains all the required packages that must be installed 
+
+pytest
+IPython
 spotipy
-spotipy.oauth2
-IPython.display
+python-dotenv
+#operator
+
+
