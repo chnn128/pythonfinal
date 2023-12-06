@@ -1,9 +1,27 @@
+#this is the "requirements.txt file
 #this file contains all the required packages that must be installed 
 
-pytest
-IPython
+requests
+
+plotly
+
+#need for api
 spotipy
+
+#plotly requires pandas
+pandas
+
 python-dotenv
-#operator
+
+#test
+pytest
 
 
+#for displaying images
+IPython
+
+#needed for webapp
+flask
+
+#server needs this to run the webapp
+gunicorn
