@@ -58,19 +58,19 @@ def fetch_spotify_data(cid, csecret, playlist_URL):
     sorted_tracks_infos[0]['album'].keys() #just peeking and exploring
 
     #appending track info and danceability ratings to a return list
-    #final_return = []
-    #n = 0
+    final_return = []
+    n = 0
    
-    #for track in sorted_tracks_infos:
-    #    final_return.append({'Name': track['name'],
-    #                  'Artist': track['artists'][0]['name'],
-    #                  'Album': track['album']['name'],
-    #                  'Thumbnail': track['album']['images'][1]['url'],
-    #                  'Danceability': sorted_track_attributerating[n]})
-    #    n = n + 1
+    for track in sorted_tracks_infos:
+        final_return.append({'Name': track['name'],
+                      'Artist': track['artists'][0]['name'],
+                      'Album': track['album']['name'],
+                      'Thumbnail': track['album']['images'][1]['url'],
+                      'Danceability': sorted_track_attributerating[n]})
+        n = n + 1
 
     #returning the sorted playlist
-    return sorted_tracks_infos
+    return final_return
 
 
 
@@ -86,18 +86,6 @@ if __name__ == "__main__":
     PLAYLIST_URL = input("Please enter playlist URL: ")
 
     final_return =  fetch_spotify_data(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL)
-
-    #appending track info and danceability ratings to a return list
-    final_return = []
-    n = 0
-   
-    for track in sorted_tracks_infos:
-        final_return.append({'Name': track['name'],
-                      'Artist': track['artists'][0]['name'],
-                      'Album': track['album']['name'],
-                      'Thumbnail': track['album']['images'][1]['url'],
-                      'Danceability': sorted_track_attributerating[n]})
-        n = n + 1
 
     for track in final_return:
         print('\n---------')
