@@ -1,0 +1,32 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "spotify_dashboard" %}
+
+{% block content %}
+
+    <h2>Dashboard</h2>
+
+    <table class="table table-hover table-responsive caption-top">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Album</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!--
+            JINJA FOR LOOP
+            https://jinja.palletsprojects.com/en/3.1.x/templates/
+        -->
+        {% for track in data %}
+            <tr>
+                <td>{{ track["name"] }}</td>
+                <td>{{ track["artists"][0]["name"] }}</td>
+                <td>{{ track['album']['name'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

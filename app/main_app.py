@@ -11,7 +11,7 @@ from IPython.display import Image, display
 
 
 
-def main(cid, csecret, playlist_URL):
+def fetch_spotify_data(cid, csecret, playlist_URL):
 
     c_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=csecret)
     sp = spotipy.Spotify(client_credentials_manager = c_credentials_manager)
@@ -51,36 +51,26 @@ def main(cid, csecret, playlist_URL):
         sorted_track_uris.append(track['uri'])
         sorted_track_attributerating.append(track['danceability'])
 
-
-
-
-
     #grabbing the track information of the sorted tracks
     sorted_tracks_infos = sp.tracks(sorted_track_uris)['tracks']
 
     sorted_tracks_infos[0].keys() #just peeking and exploring
     sorted_tracks_infos[0]['album'].keys() #just peeking and exploring
 
-
-
-
     #appending track info and danceability ratings to a return list
-    final_return = []
-    n = 0
-
-    for track in sorted_tracks_infos:
-        final_return.append({'Name': track['name'],
-                            'Artist': track['artists'][0]['name'],
-                            'Album': track['album']['name'],
-                            'Thumbnail': track['album']['images'][1]['url'],
-                            'Danceability': sorted_track_attributerating[n]})
-        n = n + 1
-
-
-
+    #final_return = []
+    #n = 0
+   
+    #for track in sorted_tracks_infos:
+    #    final_return.append({'Name': track['name'],
+    #                  'Artist': track['artists'][0]['name'],
+    #                  'Album': track['album']['name'],
+    #                  'Thumbnail': track['album']['images'][1]['url'],
+    #                  'Danceability': sorted_track_attributerating[n]})
+    #    n = n + 1
 
     #returning the sorted playlist
-    return final_return #just peeking and checking
+    return sorted_tracks_infos
 
 
 
@@ -94,11 +84,20 @@ if __name__ == "__main__":
     CSECRET = str(os.getenv("CSECRET"))
 
     PLAYLIST_URL = input("Please enter playlist URL: ")
-    
 
+    final_return =  fetch_spotify_data(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL)
 
-
-    final_return =  main(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL)
+    #appending track info and danceability ratings to a return list
+    final_return = []
+    n = 0
+   
+    for track in sorted_tracks_infos:
+        final_return.append({'Name': track['name'],
+                      'Artist': track['artists'][0]['name'],
+                      'Album': track['album']['name'],
+                      'Thumbnail': track['album']['images'][1]['url'],
+                      'Danceability': sorted_track_attributerating[n]})
+        n = n + 1
 
     for track in final_return:
         print('\n---------')
