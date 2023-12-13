@@ -8,6 +8,7 @@
     <table class="table table-hover table-responsive caption-top">
         <thead>
             <tr>
+                <th scope="col">Album Cover</th>
                 <th scope="col">Title</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Album</th>
@@ -21,6 +22,7 @@
         -->
         {% for track in data %}
             <tr>
+                <td> <img src="{{ track['Thumbnail'] }}" class="img-thumbnail" width="100px"/> </td>
                 <td>{{ track["Name"] }}</td>
                 <td>{{ track["Artist"] }}</td>
                 <td>{{ track["Album"] }}</td>
