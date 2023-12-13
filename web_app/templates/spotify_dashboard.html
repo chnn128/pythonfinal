@@ -28,7 +28,7 @@
                 <td> <a href="{{ track['SongURL'] }}" class="link-dark">{{ track["Name"] }}</a></td>
                 <td>{{ track["Artist"] }}</td>
                 <td>{{ track["Album"] }}</td>
-                <td>{{ track["Danceability"] }}</td>
+                <td>{{ track["Attribute"] }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -43,7 +43,7 @@
         var DATA = JSON.parse('{{data | tojson}}') // https://stackoverflow.com/a/45132694/670433
         console.log(DATA)
 
-        var trait = DATA.map(obj => obj["Danceability"])
+        var trait = DATA.map(obj => obj["Attribute"])
 
         const trace = {
         x: trait,

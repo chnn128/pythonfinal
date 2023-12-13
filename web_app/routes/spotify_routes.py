@@ -24,11 +24,12 @@ def spotify_dashboard():
         print("URL PARAMS:", request_data)
 
     playlist_url = request_data.get("playlist_url")
+    song_characteristic = request_data.get("song_characteristic")
     CID = str(os.getenv("CID"))
     CSECRET = str(os.getenv("CSECRET"))
 
     try:
-        data = fetch_spotify_data(cid=CID, csecret=CSECRET, playlist_URL=playlist_url)
+        data = fetch_spotify_data(cid=CID, csecret=CSECRET, playlist_URL=playlist_url, attribute = song_characteristic)
 
         flash("Fetched Latest Spotify Data!", "success")
         return render_template("spotify_dashboard.html", data=data)
