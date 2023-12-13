@@ -38,7 +38,7 @@ csecret="____"
 Run the example script:
 
 ```sh
-python -m app.app
+python -m app.main_app
 
 ```
 

@@ -1,0 +1,27 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "spotify_form" %}
+
+{% block content %}
+
+    <h2>Spotify Form</h2>
+
+    <p>Request data...</p>
+
+    <form action="/spotify/dashboard" method="POST">
+
+        <label>Playlist URL:</label>
+        <input type="text" name="playlist_url" placeholder="" value="">
+        <br>
+
+        <label>Characteristic:</label>
+        <select name="song_characteristic">
+            <option value="danceability">danceability</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <br>
+
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}
