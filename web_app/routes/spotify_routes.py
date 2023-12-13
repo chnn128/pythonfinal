@@ -38,3 +38,14 @@ def spotify_dashboard():
 
         flash("URL Error. Please check your playlist and try again!", "danger")
         return redirect("/spotify/form")
+
+@spotify_routes.route("/api/spotify.json")
+def spotify_api():
+    print("SPOTIFY API DATA")
+
+    try:
+        data = fetch_spotify_data()
+        return data
+    except Exception as err:
+        print('OOPS', err)
+        return {"message":"Data Error. Please try again."}, 404

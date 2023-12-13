@@ -66,7 +66,8 @@ def fetch_spotify_data(cid, csecret, playlist_URL):
                       'Artist': track['artists'][0]['name'],
                       'Album': track['album']['name'],
                       'Thumbnail': track['album']['images'][1]['url'],
-                      'Danceability': sorted_track_attributerating[n]})
+                      'Danceability': sorted_track_attributerating[n],
+                      'SongURL': track['external_urls']['spotify']})
         n = n + 1
 
     #returning the sorted playlist
