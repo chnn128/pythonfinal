@@ -11,7 +11,7 @@ from IPython.display import Image, display
 
 
 
-def fetch_spotify_data(cid, csecret, playlist_URL):
+def fetch_spotify_data(cid, csecret, playlist_URL, attribute):
 
     c_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=csecret)
     sp = spotipy.Spotify(client_credentials_manager = c_credentials_manager)
@@ -34,22 +34,22 @@ def fetch_spotify_data(cid, csecret, playlist_URL):
 
 
 
-    #sorting the audio features list by 'danceability'
-    sorted_tracks_attributes = sorted(tracks_attributes, key = itemgetter('danceability'), reverse = True)
+    #sorting the audio features list by 'attribute'
+    sorted_tracks_attributes = sorted(tracks_attributes, key = itemgetter(attribute), reverse = True)
     sorted_tracks_attributes[0] #just to examine the different possibilities
 
 
 
 
-    #isolating the sorted track uris and danceability scores - not super efficient at the moment
+    #isolating the sorted track uris and attribute scores - not super efficient at the moment
     sorted_track_uri_attributerating = []
     sorted_track_uris = []
     sorted_track_attributerating = []
 
     for track in sorted_tracks_attributes:
-        sorted_track_uri_attributerating.append([track['uri'], track['danceability']])
+        sorted_track_uri_attributerating.append([track['uri'], track[attribute]])
         sorted_track_uris.append(track['uri'])
-        sorted_track_attributerating.append(track['danceability'])
+        sorted_track_attributerating.append(track[attribute])
 
     #grabbing the track information of the sorted tracks
     sorted_tracks_infos = sp.tracks(sorted_track_uris)['tracks']
@@ -66,7 +66,7 @@ def fetch_spotify_data(cid, csecret, playlist_URL):
                       'Artist': track['artists'][0]['name'],
                       'Album': track['album']['name'],
                       'Thumbnail': track['album']['images'][1]['url'],
-                      'Danceability': sorted_track_attributerating[n],
+                      'Attribute': sorted_track_attributerating[n],
                       'SongURL': track['external_urls']['spotify']})
         n = n + 1
 
@@ -91,4 +91,4 @@ if __name__ == "__main__":
     for track in final_return:
         print('\n---------')
         display(Image(url=track['Thumbnail'], height=300))
-        print(f" Name: {track['Name']} \n Artist: {track['Artist']} \n Album: {track['Album']} \n Danceability Rating: {track['Danceability']} \n" )
+        print(f" Name: {track['Name']} \n Artist: {track['Artist']} \n Album: {track['Album']} \n Attribute Rating: {track['Attribute']} \n" )
