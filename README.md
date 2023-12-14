@@ -54,6 +54,7 @@ pytest
 ### Web App
 
 Run the web app (then view in the browser at http://localhost:5000/):
+
 Details about the web app can be seen in the browser once launched! 
 
 ```sh
