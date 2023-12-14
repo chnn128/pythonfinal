@@ -17,17 +17,17 @@ pip install -r requirements.txt
 
 Obtain an [API Key from Spotify](https://developer.spotify.com/documentation/web-api/tutorials/getting-started).
 
-You must first follow the [setup instructions](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) to create an app, request an access token (API KEY), and use the token to request data.
+You must first follow the [setup instructions](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) to create an app, request an access token (API KEY), and use the token to request data. You should have a client ID and a client secret.
 
 Create a ".env" file and paste in the following contents:
 
 ```sh
 # this is the ".env" file...
 
-#client ID
+#Place your client ID here in this variable
 cid="_________"
 
-#client secret
+#Place your client secret here in this variable
 csecret="____"
 
 ```
@@ -35,7 +35,7 @@ csecret="____"
 
 ## Usage
 
-Run the example script:
+Run the project locally:
 
 ```sh
 python -m app.main_app
@@ -54,6 +54,7 @@ pytest
 ### Web App
 
 Run the web app (then view in the browser at http://localhost:5000/):
+Details about the web app can be seen in the browser once launched! 
 
 ```sh
 # Mac OS:
@@ -65,3 +66,4 @@ FLASK_APP=web_app flask run
 export FLASK_APP=web_app
 flask run
 ```
+
