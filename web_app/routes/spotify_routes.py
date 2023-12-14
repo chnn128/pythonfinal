@@ -32,7 +32,7 @@ def spotify_dashboard():
         data = fetch_spotify_data(cid=CID, csecret=CSECRET, playlist_URL=playlist_url, attribute = song_characteristic)
 
         flash("Fetched Latest Spotify Data!", "success")
-        return render_template("spotify_dashboard.html", data=data)
+        return render_template("spotify_dashboard.html", data=data, attribute = song_characteristic)
 
     except Exception as err:
         print('OOPS', err)
