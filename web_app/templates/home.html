@@ -3,26 +3,43 @@
 
 
 {% block content %}
+    <div class="container mt-5">
+        <h1 class="display-3">Welcome to our Web App!</h1>
 
-    <h1>Welcome to our Web App!</h1>
-    
-    <p></p>
-    <p></p>
+        <section class="my-5">
+            <h2 class="mb-4">Problem Statement</h2>
+            <p class="ms-4">We created this app to help Georgetown students rank their playlists by danceability. The goal is to facilitate social events that focus on dancing and bonding rather than small talk.</p>
+            <p class="ms-4">We've implemented various attributes for ranking playlists, allowing students to create a playlist to their taste in a time crunch!</p>
+        </section>
 
-    <h3>Problem Statement</h3>
-    <p>Explain why we made this app</p>
+        <section class="my-5">
+            <h2 class="mb-4">Functionality</h2>
+            <p class="ms-4">Navigate to the "Spotify Form" link at the top right to get started. </p>
+            <p class="ms-4">This app takes in a playlist link and returns the playlist sorted by Spotify's song attribute ratings, ranked in descending order (highest attribute score song at the top and lowest at the bottom).</p>
+            <p class="ms-4">We utilize Spotify's Web API's. You can find the documentation <a href="https://developer.spotify.com/documentation/web-api" target="_blank">here</a>. We request track, album, and artist information about songs in a particular playlist.</p>
+            
+            <div class="ms-4">
+                <h3 class="mb-3">Important:</h3>
+                <ul style="margin-left: 50px;">
+                    <li>Must be a playlist, not an album.</li>
+                    <li>Use a public playlist.</li>
+                    <li>The max playlist length for this code is currently 50 tracks. Providing a URL to a playlist longer than 50 songs will return an error.</li>
+                </ul>
+            </div>
+        </section>
 
-    <p></p>
-    <p></p>
-
-    <h3>Functionality</h3>
-    <p>Explain how it works</p>
-
-    <p></p>
-    <p></p>
-
-    <h3>FAQ</h3>
-    <p>some answers to frequent questions</p>
-
+        <section class="my-5">
+            <h2 class="mb-4">FAQ</h2>
+            <details>
+                <summary>I'm getting an error!</summary>
+                <p class="ms-4 mt-3">Check your:</p>
+                <ul class="ms-5">
+                    <li>Spotify playlist privacy settings</li>
+                    <li>Playlist length</li>
+                    <li>Internet connection</li>
+                </ul>
+            </details>
+        </section>
+    </div>
 
 {% endblock %}
