@@ -1,0 +1,37 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "home" %}
+
+
+{% block content %}
+
+<h1>Welcome to our Web App! </h1>
+<br>
+
+
+
+<h3>Problem Statement</h3>
+<p style="margin-left: 25px;"> We created this app in hopes of helping Georgetown students rank their playlists by danceability so they can host social events that move away from focusing on people making small talk and towards enabling bonding through dancing. </p>
+<p style="margin-left: 25px;"> We also implemented other attributes for ranking besides danceability, so that students can create a playlist to their taste in a time crunch! </p>
+<br>
+
+
+
+<h3>Functionality</h3>
+<p style="margin-left: 25px;"> This app takes in a playlist link and returns the playlist sorted by Spotify's song attribute ratings, ranked in descending order (the highest attribute score song at the top and lowest at the bottom).</p>
+<p style="margin-left: 25px;"> Specifically, we will use Spotify's Web API's (documentation found <a href="https://developer.spotify.com/documentation/web-api" target="_blank">here</a>) request track, album, and artist information about songs in a particular playlist.</p>
+<h4 style="margin-left: 25px;">    Important:</h4>
+<ul style="margin-left: 50px;">
+    <li>Must be a playlist, not an album.</li>
+    <li>Use a public playlist.</li>
+    <li>The max playlist length for this code is currently 50 tracks. Providing a URL to a playlist longer than 50 songs will return an error.</li>
+</ul>
+<br>
+
+
+<h3>FAQ</h3>
+<details>
+    <summary>I'm getting an error!</summary>
+    <p style="margin-left: 15px;"><br> Check your: <br> - Spotify playlist privacy settings <br> - Playlist length <br> - Internet connection</p>
+</details>
+
+{% endblock %}
