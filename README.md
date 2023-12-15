@@ -1,4 +1,4 @@
-# pythonfinal
+# OPIM 3244 Final - Freestyle Project
 
 This app takes in a playlist of less than 50 tracks in length and sorts by danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, or tempo (when run from the web app) or simply danceability (run from the command line).
 
