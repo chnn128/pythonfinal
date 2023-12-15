@@ -1,5 +1,4 @@
-#this script takes in all user inputs
-
+# this is the main python script 
 import os
 from dotenv import load_dotenv
 
@@ -12,19 +11,22 @@ from IPython.display import Image, display
 
 
 def fetch_spotify_data(cid, csecret, playlist_URL, attribute):
+    '''
+    This is the main python function. It takes in API credentials, playlist url, and desired attribute as strings. 
+    It requests playlist and song information from the Spotify API, then returns the playlist in a list from sorted by attribute.
+    '''
 
+    #setting up credentials for API
     c_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=csecret)
     sp = spotipy.Spotify(client_credentials_manager = c_credentials_manager)
 
 
+
     #Grabbing tracks / track URIs
-
     #playlist_URL = "https://open.spotify.com/playlist/37i9dQZEVXbNG2KDcFcKOF?si=1333723a6eff4b7f"  ### example playlist
-
     playlist_URI = playlist_URL.split("/")[-1].split("?")[0] #extracting URI from URL
     playlist_tracks_info = sp.playlist_tracks(playlist_URI)["items"]
     track_uris = [x["track"]["uri"] for x in playlist_tracks_info]
-
 
 
 
@@ -33,29 +35,25 @@ def fetch_spotify_data(cid, csecret, playlist_URL, attribute):
 
 
 
-
     #sorting the audio features list by 'attribute'
     sorted_tracks_attributes = sorted(tracks_attributes, key = itemgetter(attribute), reverse = True)
-    sorted_tracks_attributes[0] #just to examine the different possibilities
-
 
 
 
     #isolating the sorted track uris and attribute scores - not super efficient at the moment
-    sorted_track_uri_attributerating = []
     sorted_track_uris = []
     sorted_track_attributerating = []
-
+    
     for track in sorted_tracks_attributes:
-        sorted_track_uri_attributerating.append([track['uri'], track[attribute]])
         sorted_track_uris.append(track['uri'])
         sorted_track_attributerating.append(track[attribute])
+
+
 
     #grabbing the track information of the sorted tracks
     sorted_tracks_infos = sp.tracks(sorted_track_uris)['tracks']
 
-    sorted_tracks_infos[0].keys() #just peeking and exploring
-    sorted_tracks_infos[0]['album'].keys() #just peeking and exploring
+
 
     #appending track info and danceability ratings to a return list
     final_return = []
@@ -79,14 +77,18 @@ def fetch_spotify_data(cid, csecret, playlist_URL, attribute):
 
 if __name__ == "__main__":
 
+
     load_dotenv()
 
     CID = str(os.getenv("CID"))
     CSECRET = str(os.getenv("CSECRET"))
 
+    print("Welcome to our app! Running it from the command line will result in sorting by danceability. For more functionality, please launch the web app.")
     PLAYLIST_URL = input("Please enter playlist URL: ")
+    
+    
 
-    final_return =  fetch_spotify_data(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL)
+    final_return =  fetch_spotify_data(cid = CID, csecret = CSECRET, playlist_URL = PLAYLIST_URL, attribute = 'danceability')
 
     for track in final_return:
         print('\n---------')
