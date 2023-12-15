@@ -1,5 +1,7 @@
 # pythonfinal
 
+This app takes in a playlist of less than 50 tracks in length and sorts by danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, or tempo (when run from the web app) or simply danceability (run from the command line).
+
 ## Setup
 
 Create and activate a virtual environment:
@@ -10,11 +12,13 @@ conda create -n my-first-env python=3.10
 conda activate my-first-env
 ```
 
+
 Install packages:
 ```sh
 pip install -r requirements.txt
 ```
 
+Credentials: 
 Obtain an [API Key from Spotify](https://developer.spotify.com/documentation/web-api/tutorials/getting-started).
 
 You must first follow the [setup instructions](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) to create an app, request an access token (API KEY), and use the token to request data. You should have a client ID and a client secret.
@@ -32,23 +36,13 @@ csecret="____"
 
 ```
 
-
 ## Usage
 
-Run the project locally:
+Run the project from the command line:
 
 ```sh
 python -m app.main_app
 
-```
-
-
-## Testing
-
-Run tests:
-
-```sh
-pytest
 ```
 
 ### Web App
@@ -68,3 +62,10 @@ export FLASK_APP=web_app
 flask run
 ```
 
+## Testing
+
+Run tests:
+
+```sh
+pytest
+```
